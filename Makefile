@@ -1,3 +1,15 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: bbrock <bbrock@student.42.fr>              +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2020/08/20 15:36:08 by bbrock            #+#    #+#              #
+#    Updated: 2020/11/20 15:36:26 by bbrock           ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
 NAME = libasm.a
 
 SRCS =	ft_strlen.s \
@@ -9,26 +21,18 @@ SRCS =	ft_strlen.s \
 
 OBJS = $(SRCS:.s=.o)
 
+all: $(NAME)
+
 %.o	: %.s
 	nasm -f macho64 $< -o $@
 
 $(NAME): $(OBJS)
 	ar rcs $(NAME) $(OBJS)
 
-all: $(NAME)
-
 clean:
 	rm -f $(OBJS)
 
-try: all
-	@touch test
-	@echo "Ceci est un test" > test
-	gcc -I./libasm.h libasm.a main.c -o try_libasm
-	./try_libasm
-
 fclean: clean
 	rm -f $(NAME)
-	rm -f try_libasm
-	rm -f test
 
 re: fclean all

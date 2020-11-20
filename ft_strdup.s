@@ -4,6 +4,7 @@ section .text
     extern _malloc
     extern _ft_strlen
     extern _ft_strcpy
+	extern ___error
 
 ;RDI, RSI, RDX, RCX, R8, R9
 
@@ -22,10 +23,13 @@ _ft_strdup:
     call _ft_strcpy
     ret
 
-
-
 error:
-    mov rax, 0
+	call ___error
+    mov dl, 12
+	mov [rax], dl
+	mov rax, 0
+	ret
 
 exit:
-    ret
+	ret
+

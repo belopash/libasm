@@ -1,6 +1,8 @@
 section .text
     global _ft_strlen
 
+;RDI, RSI, RDX, RCX, R8, R9
+
 _ft_strlen:
     xor rcx, rcx
 
