@@ -6,7 +6,7 @@
 #    By: bbrock <bbrock@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/08/20 15:36:08 by bbrock            #+#    #+#              #
-#    Updated: 2020/11/20 15:36:26 by bbrock           ###   ########.fr        #
+#    Updated: 2020/11/20 16:33:17 by bbrock           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,7 +27,8 @@ all: $(NAME)
 	nasm -f macho64 $< -o $@
 
 $(NAME): $(OBJS)
-	ar rcs $(NAME) $(OBJS)
+	ar rcs $@ $(OBJS)
+	ranlib $@
 
 clean:
 	rm -f $(OBJS)
